@@ -19,9 +19,9 @@ const Header = () => {
 
                 <Navbar page={0}/>
 
-                <div className="flex gap-16 lg:justify-between lg:items-center lg:flex-row lg:text-left text-center p-32 justify-center flex-col ">
+                <div className="flex gap-16 lg:justify-between lg:items-center lg:flex-row lg:text-left text-center sm:p-32 justify-center flex-col ">
                     {/* header text */}
-                    <div className="barlow-condensed-regular p-8 lg:max-w-[50%]">
+                    <div className="barlow-condensed-regular sm:p-8 p-4 lg:max-w-[50%] w-[100%]">
                         <h5 className="text-xl">
                             SO, YOU WANT TO TRAVEL TO
                         </h5>
@@ -35,7 +35,7 @@ const Header = () => {
 
                     <div className="">
 
-                        <button className="bg-white text-4xl text-blue-900 p-16 aspect-square rounded-full bellefair-regular transition-all hover:text-[#0B0D1777] hover:shadow-[0_0_0_60px_rgba(255,255,255,0.5)] hover:scale-75">
+                        <button className="bg-white text-4xl text-blue-900 sm:p-16 p-8 aspect-square rounded-full bellefair-regular transition-all hover:text-[#0B0D1777] hover:shadow-[0_0_0_60px_rgba(255,255,255,0.5)] hover:scale-75">
                             EXPLORE
                         </button>
 
