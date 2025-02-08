@@ -1,10 +1,11 @@
-'useClient';
+
 import Image from "next/image";
 import earthImageDesktop from "@/public/home/background-home-desktop.jpg"
 import earthImageMobile from "@/public/home/background-home-mobile.jpg"
 import earthImageTablet from "@/public/home/background-home-tablet.jpg"
 import Navbar from "@/pages/Component/navbar";
-
+import Link from "next/link";
+import Destinations from "../../destinations/destinations";
 
 
 const Header = () => {
@@ -12,10 +13,10 @@ const Header = () => {
 
     return (
         <>
-            <header className="">
-                <Image src={earthImageDesktop} className="w-[100%] absolute top-0 z-[-1] lg:block hidden h-screen"/>
-                <Image src={earthImageMobile} className="w-[100%] absolute top-0 z-[-1] sm:hidden h-screen"/>
-                <Image src={earthImageTablet} className="w-[100%] absolute top-0 z-[-1] lg:hidden sm:block hidden h-screen"/>
+            <header className="relative h-screen">
+                <Image src={earthImageDesktop} className="w-[100%] absolute top-0 z-[-1] lg:block hidden h-[100%]"/>
+                <Image src={earthImageMobile} className="w-[100%] absolute top-0 z-[-1] sm:hidden h-[100%]"/>
+                <Image src={earthImageTablet} className="w-[100%] absolute top-0 z-[-1] lg:hidden sm:block hidden h-[100%]"/>
 
                 <Navbar page={0}/>
 
@@ -35,9 +36,11 @@ const Header = () => {
 
                     <div className="">
 
-                        <button className="bg-white text-4xl text-blue-900 sm:p-16 p-8 aspect-square rounded-full bellefair-regular transition-all hover:text-[#0B0D1777] hover:shadow-[0_0_0_60px_rgba(255,255,255,0.5)] hover:scale-75">
-                            EXPLORE
-                        </button>
+                        <Link href={"/destinations/destinations"} replace={true}>
+                            <button className="bg-white text-4xl text-blue-900 sm:p-16 p-8 aspect-square rounded-full bellefair-regular transition-all hover:text-[#0B0D1777] hover:shadow-[0_0_0_60px_rgba(255,255,255,0.5)] hover:scale-75">
+                                EXPLORE
+                            </button>
+                        </Link>
 
                     </div>
 

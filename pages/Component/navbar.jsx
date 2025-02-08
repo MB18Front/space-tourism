@@ -3,6 +3,7 @@ import logo from "@/public/logo.svg";
 import menuCloseIco from "@/public/navbar/menu-close.svg";
 import menuOpenIco from "@/public/navbar/menu-open.svg"
 import { useEffect } from "react";
+import Link from "next/link";
 
 const Navbar = ({page}) => {
     const menuOpen = () => {
@@ -55,14 +56,18 @@ const Navbar = ({page}) => {
 
                     {/* menu items */}
                     <li id="home" className="py-4 p-4 ">
-                        <button className="text-left sm:p-4 p-2">
-                            00 HOME
-                        </button>
+                        <Link href={"/"} replace={true}>
+                            <button className="text-left sm:p-4 p-2">
+                                00 HOME
+                            </button>
+                        </Link>
                     </li>
                     <li id="destination" className="py-4 p-4 ">
-                        <button className="text-left sm:p-4 p-2">
-                            01 DESTINATION
-                        </button>
+                        <Link href={"/destinations/destinations"} replace={true}>
+                            <button className="text-left sm:p-4 p-2">
+                                01 DESTINATION
+                            </button>
+                        </Link>
                     </li>
                     <li id="crew" className="py-4 p-4 ">
                         <button className="text-left sm:p-4 p-2">
