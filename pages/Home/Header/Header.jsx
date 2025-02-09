@@ -5,7 +5,6 @@ import earthImageMobile from "@/public/home/background-home-mobile.jpg"
 import earthImageTablet from "@/public/home/background-home-tablet.jpg"
 import Navbar from "@/pages/Component/navbar";
 import Link from "next/link";
-import Destinations from "../../destinations/destinations";
 
 
 const Header = () => {
