@@ -13,7 +13,7 @@ import axios from "axios";
 
 
 const Destinations = () => {
-
+    
     const ImageArr = [moonImg, marsImg, europaImg, titanpaImg]; {/* This array is written for easy selection of images according to the API information.
 The index of the images is the same as its information in the API. */}
 
@@ -22,10 +22,28 @@ The index of the images is the same as its information in the API. */}
     }).then(res => console.log(res.data))
 
     const selectMoon = () => {
-        document.getElementById("select-moon").classList.toggle("dest-active");
-        document.getElementById("select-mars").classList.toggle("dest-active");
-        document.getElementById("select-europa").classList.toggle("dest-active");
-        document.getElementById("select-titan").classList.toggle("dest-active");
+        document.getElementById("select-moon").classList.add("dest-active");
+        document.getElementById("select-mars").classList.remove("dest-active");
+        document.getElementById("select-europa").classList.remove("dest-active");
+        document.getElementById("select-titan").classList.remove("dest-active");
+    }
+    const selectMars = () => {
+        document.getElementById("select-moon").classList.remove("dest-active");
+        document.getElementById("select-mars").classList.add("dest-active");
+        document.getElementById("select-europa").classList.remove("dest-active");
+        document.getElementById("select-titan").classList.remove("dest-active");
+    }
+    const selectEuropa = () => {
+        document.getElementById("select-moon").classList.remove("dest-active");
+        document.getElementById("select-mars").classList.remove("dest-active");
+        document.getElementById("select-europa").classList.add("dest-active");
+        document.getElementById("select-titan").classList.remove("dest-active");
+    }
+    const selectTitan = () => {
+        document.getElementById("select-moon").classList.remove("dest-active");
+        document.getElementById("select-mars").classList.remove("dest-active");
+        document.getElementById("select-europa").classList.remove("dest-active");
+        document.getElementById("select-titan").classList.add("dest-active");
     }
 
 
@@ -56,10 +74,10 @@ The index of the images is the same as its information in the API. */}
                     <div className="lg:w-[40%]">
                         
                         <div className="flex gap-8 my-8">
-                            <button id="select-moon" onClick={selectMoon} > MOON </button>
-                            <button id="select-mars" className="" > MARS </button>
-                            <button id="select-europa" className="" > EUROPA </button>
-                            <button id="select-titan" className="" > TITAN </button>
+                            <button id="select-moon" className="dest-active" onClick={selectMoon} > MOON </button>
+                            <button id="select-mars" onClick={ selectMars } className="" > MARS </button>
+                            <button id="select-europa" onClick={selectEuropa} className="" > EUROPA </button>
+                            <button id="select-titan" onClick={ selectTitan } className="" > TITAN </button>
                         </div>
 
 
@@ -69,7 +87,7 @@ The index of the images is the same as its information in the API. */}
                         </p>
                         <hr />
                         
-                        <div className="sm:flex gap-8 py-4">
+                        <div className="flex gap-8 py-4">
                             <div>
                                 <p>AVG. DISTANCE</p>
                                 <p className="bellefair-regular text-2xl">384,400KM</p>
