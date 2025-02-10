@@ -12,7 +12,7 @@ const Header = () => {
 
     return (
         <>
-            <header className="relative h-screen">
+            <header className="relative">
                 <Image src={earthImageDesktop} className="w-[100%] absolute top-0 z-[-1] lg:block hidden h-[100%]"/>
                 <Image src={earthImageMobile} className="w-[100%] absolute top-0 z-[-1] sm:hidden h-[100%]"/>
                 <Image src={earthImageTablet} className="w-[100%] absolute top-0 z-[-1] lg:hidden sm:block hidden h-[100%]"/>
