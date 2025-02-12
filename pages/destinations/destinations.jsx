@@ -10,40 +10,99 @@ import marsImg from "@/public/destination/image-mars.webp";
 import europaImg from "@/public/destination/image-europa.webp";
 import titanpaImg from "@/public/destination/image-titan.webp";
 import axios from "axios";
+import { useState } from "react";
 
 
 const Destinations = () => {
+
+    const [apiData, setApiData] = useState()
     
     const ImageArr = [moonImg, marsImg, europaImg, titanpaImg]; {/* This array is written for easy selection of images according to the API information.
 The index of the images is the same as its information in the API. */}
 
     axios({
         url: "/api/data"
-    }).then(res => console.log(res.data))
+    }).then(res => setApiData(res))
 
     const selectMoon = () => {
         document.getElementById("select-moon").classList.add("dest-active");
+        document.getElementById("image-moon").className = "";
         document.getElementById("select-mars").classList.remove("dest-active");
+        document.getElementById("image-mars").className = "hidden";
         document.getElementById("select-europa").classList.remove("dest-active");
+        document.getElementById("image-europa").className = "hidden";
         document.getElementById("select-titan").classList.remove("dest-active");
+        document.getElementById("image-titan").className = "hidden";
+        setMoonData();
+
+    }
+
+    const setMoonData = () => {
+        const moonData = apiData.data.destinations[0];
+        document.getElementById("planet-name").innerHTML = ` ${moonData.name} `;
+        document.getElementById("planet-description").innerHTML = ` ${moonData.description} `;
+        document.getElementById("planet-distance").innerHTML = ` ${moonData.distance} `;
+        document.getElementById("travel-time").innerHTML = ` ${moonData.travel} `;
     }
     const selectMars = () => {
         document.getElementById("select-moon").classList.remove("dest-active");
+        document.getElementById("image-moon").className = "hidden";
         document.getElementById("select-mars").classList.add("dest-active");
+        document.getElementById("image-mars").className = "";
         document.getElementById("select-europa").classList.remove("dest-active");
+        document.getElementById("image-europa").className = "hidden";
         document.getElementById("select-titan").classList.remove("dest-active");
+        document.getElementById("image-titan").className = "hidden";
+        console.log(apiData)
+        setMarsData()
     }
+
+    const setMarsData = () => {
+        const marsData = apiData.data.destinations[1];
+        document.getElementById("planet-name").innerHTML = ` ${marsData.name} `;
+        document.getElementById("planet-description").innerHTML = ` ${marsData.description} `;
+        document.getElementById("planet-distance").innerHTML = ` ${marsData.distance} `;
+        document.getElementById("travel-time").innerHTML = ` ${marsData.travel} `;
+    }
+
     const selectEuropa = () => {
         document.getElementById("select-moon").classList.remove("dest-active");
+        document.getElementById("image-moon").className = "hidden";
         document.getElementById("select-mars").classList.remove("dest-active");
+        document.getElementById("image-mars").className = "hidden";
         document.getElementById("select-europa").classList.add("dest-active");
+        document.getElementById("image-europa").className = "";
         document.getElementById("select-titan").classList.remove("dest-active");
+        document.getElementById("image-titan").className = "hidden";
+        setEuropaData()
     }
+
+    const setEuropaData = () => {
+        const europaData = apiData.data.destinations[2];
+        document.getElementById("planet-name").innerHTML = ` ${europaData.name} `;
+        document.getElementById("planet-description").innerHTML = ` ${europaData.description} `;
+        document.getElementById("planet-distance").innerHTML = ` ${europaData.distance} `;
+        document.getElementById("travel-time").innerHTML = ` ${europaData.travel} `;
+    }
+
     const selectTitan = () => {
         document.getElementById("select-moon").classList.remove("dest-active");
+        document.getElementById("image-moon").className = "hidden";
         document.getElementById("select-mars").classList.remove("dest-active");
+        document.getElementById("image-mars").className = "hidden";
         document.getElementById("select-europa").classList.remove("dest-active");
+        document.getElementById("image-europa").className = "hidden";
         document.getElementById("select-titan").classList.add("dest-active");
+        document.getElementById("image-titan").className = "";
+        setTitanData()
+    }
+
+    const setTitanData = () => {
+        const titanData = apiData.data.destinations[3];
+        document.getElementById("planet-name").innerHTML = ` ${titanData.name} `;
+        document.getElementById("planet-description").innerHTML = ` ${titanData.description} `;
+        document.getElementById("planet-distance").innerHTML = ` ${titanData.distance} `;
+        document.getElementById("travel-time").innerHTML = ` ${titanData.travel} `;
     }
 
 
@@ -67,9 +126,9 @@ The index of the images is the same as its information in the API. */}
                 <div className="lg:flex lg:justify-between lg:p-32 lg:items-center container w-full">
                     <div>
                         <Image id="image-moon" className="" src={ImageArr[0]} /> 
-                        <Image id="image-mars" className="hidden opacity-0 transition-all" src={ImageArr[1]} /> 
-                        <Image id="image-europa" className="hidden opacity-0 transition-all" src={ImageArr[2]} /> 
-                        <Image id="image-titan" className="hidden opacity-0 transition-all" src={ImageArr[3]} /> 
+                        <Image id="image-mars" className="hidden" src={ImageArr[1]} /> 
+                        <Image id="image-europa" className="hidden" src={ImageArr[2]} /> 
+                        <Image id="image-titan" className="hidden" src={ImageArr[3]} /> 
                     </div>
                     <div className="lg:w-[40%]">
                         
@@ -81,8 +140,8 @@ The index of the images is the same as its information in the API. */}
                         </div>
 
 
-                        <h3 className="bellefair-regular text-8xl py-8"> MOON </h3>
-                        <p className="py-8">
+                        <h3 id="planet-name" className="bellefair-regular text-8xl py-8"> MOON </h3>
+                        <p id="planet-description" className="py-8">
                             See our planet as you’ve never seen it before. A perfect relaxing trip away to help regain perspective and come back refreshed. While you’re there, take in some history by visiting the Luna 2 and Apollo 11 landing sites.
                         </p>
                         <hr />
@@ -90,11 +149,11 @@ The index of the images is the same as its information in the API. */}
                         <div className="flex gap-8 py-4">
                             <div>
                                 <p>AVG. DISTANCE</p>
-                                <p className="bellefair-regular text-2xl">384,400KM</p>
+                                <p id="planet-distance" className="bellefair-regular text-2xl">384,400KM</p>
                             </div>
                             <div>
                                 <p>EST. TRAVEL TIME</p>
-                                <p className="bellefair-regular text-2xl">3 DAYS</p>
+                                <p id="travel-time" className="bellefair-regular text-2xl">3 DAYS</p>
                             </div>
                         </div>
 
